@@ -8,6 +8,8 @@
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
+    <script type="text/javascript" src="javascripts/vendors/d3/d3.v2.js"></script>
+
     <title>Venturelab-creativity</title>
   </head>
 
@@ -16,54 +18,309 @@
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
-          <a id="forkme_banner" href="https://github.com/jp-a/VentureLab-Creativity">View on GitHub</a>
+          <!--<a id="forkme_banner" href="https://github.com/jp-a/VentureLab-Creativity">View on GitHub</a>-->
 
-          <h1 id="project_title">Venturelab-creativity</h1>
+          <h1 id="project_title">Venture Lab - Creativity Course - hi5 Team</h1>
           <h2 id="project_tagline"></h2>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/jp-a/VentureLab-Creativity/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/jp-a/VentureLab-Creativity/tarball/master">Download this project as a tar.gz file</a>
-            </section>
+            <!--<section id="downloads">-->
+              <!--<a class="zip_download_link" href="https://github.com/jp-a/VentureLab-Creativity/zipball/master">Download this project as a .zip file</a>-->
+              <!--<a class="tar_download_link" href="https://github.com/jp-a/VentureLab-Creativity/tarball/master">Download this project as a tar.gz file</a>-->
+            <!--</section>-->
         </header>
     </div>
 
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h3>Welcome to GitHub Pages.</h3>
+        <h3>Getting to know you</h3>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+          <div id="graph"/>
       </section>
     </div>
+
+
+
+        <script type="text/javascript" charset="utf-8">
+        var w = 960, h = 500;
+
+        var labelDistance = 5;
+
+        var vis = d3.select( "#graph" ).append( "svg:svg" ).attr( "width", w ).attr( "height", h );
+
+        var nodes = [
+            {
+                label: 'Jean-Philippe'
+                , type: 'person'
+            },
+            {
+                label: 'Madan'
+                , type: 'person'
+            },
+            {
+                label: 'Faith'
+                , type: 'person'
+            },
+            {
+                label: 'Greg'
+                , type: 'person'
+            },
+            {
+                label: 'Anshu'
+                , type: 'person'
+            },
+            {
+                label: 'I like art'
+            },
+            {
+                label: 'I have a car'
+            },
+            {
+                label: 'I am married'
+            },
+            {
+                label: 'I have a child'
+            },
+            {
+                label: 'I like nature'
+            },
+            {
+                label: 'I like to travel'
+            },
+            {
+                label: 'I am spiritual'
+            },
+            {
+                label: 'I like to Kitesurf'
+            },
+            {
+                label: 'I like laughing about myself'
+            }
+        ];
+
+        var labelAnchors = [];
+        for(var i = 0; i < nodes.length; i++) {
+            labelAnchors.push({
+                node : nodes[ i ]
+            });
+            labelAnchors.push({
+                node : nodes[ i ]
+            });
+        }
+
+        // Labels
+        var labelAnchorLinks = [];
+        for(var i = 0; i < nodes.length; i++) {
+            labelAnchorLinks.push({
+                source : i * 2,
+                target : i * 2 + 1,
+                weight : 1
+            });
+        };
+
+        // Links
+        var links = [];
+        for ( var s = 0; s < 5; s++ ) {
+            for ( var t = 5; t < nodes.length - 2 ; t++ ) {
+                links.push( {
+                    source: s,
+                    target: t,
+                    weight: 1
+                } );
+            }
+        };
+        links.push( {
+            source: 0,
+            target: 12,
+            weight: 1
+        } );
+        links.push( {
+            source: 0,
+            target: 13,
+            weight: 1
+        } );
+        links.push( {
+            source: 3,
+            target: 13,
+            weight: 1
+        } );
+
+
+        //    var links = [
+        //        {
+        //            source: 0,
+        //            target: 5,
+        //            weight: 1
+        //        },
+        //        {
+        //            source: 0,
+        //            target: 6,
+        //            weight: 1
+        //        }
+        //    ];
+
+        //    for(var i = 0; i < 0; i++) {
+        //        var node = {
+        //            label : "node " + i
+        //        };
+        //        nodes.push(node);
+        //        labelAnchors.push({
+        //            node : node
+        //        });
+        //        labelAnchors.push({
+        //            node : node
+        //        });
+        //    };
+
+        //    for(var i = 0; i < nodes.length; i++) {
+        //        for(var j = 0; j < i; j++) {
+        //            if(Math.random() > .95)
+        //                links.push({
+        //                    source : i,
+        //                    target : j,
+        //                    weight : Math.random()
+        //                });
+        //        }
+        //        labelAnchorLinks.push({
+        //            source : i * 2,
+        //            target : i * 2 + 1,
+        //            weight : 1
+        //        });
+        //    };
+
+        var force = d3.layout
+                .force()
+                .size( [w, h] )
+                .nodes( nodes )
+                .links( links )
+                .gravity( 1 )
+                .linkDistance( 200 )
+                .charge( -3000 )
+                .linkStrength( function ( x ) {
+                    return x.weight * 5
+                } );
+
+
+        force.start();
+
+        var force2 = d3.layout
+                .force()
+                .nodes( labelAnchors )
+                .links( labelAnchorLinks )
+                .gravity( 0 )
+                .linkDistance( 0 )
+                .linkStrength( 8 )
+                .charge( -100 )
+                .size( [w, h] );
+        force2.start();
+
+        var link = vis.selectAll( "line.link" )
+                .data( links )
+                .enter()
+                .append( "svg:line" )
+                .attr( "class", "link" )
+                .style( "stroke", "#CCC" );
+
+        var node = vis.selectAll( "g.node" )
+                .data( force.nodes() )
+                .enter()
+                .append( "svg:g" )
+                .attr( "class", "node" );
+        node.append( "svg:circle" )
+                .attr( "r", function ( d, i ) {
+                    if( d.type == 'person' )
+                        return 10;
+                    else
+                        return 5;
+                } )
+                .style( "fill", function ( d, i ) {
+                    if( d.type == 'person' )
+                        return "deeppink";
+                    else
+                        return "#555";
+                } )
+                .style( "stroke", "#FFF" )
+                .style( "stroke-width", 3 );
+        node.call( force.drag );
+
+
+        var anchorLink = vis.selectAll( "line.anchorLink" )
+                .data( labelAnchorLinks )
+                //.enter().append( "svg:line" ).attr( "class", "anchorLink" ).style( "stroke", "#999" );
+
+        var anchorNode = vis.selectAll( "g.anchorNode" )
+                .data( force2.nodes() )
+                .enter()
+                .append( "svg:g" )
+                .attr( "class", "anchorNode" );
+        anchorNode.append( "svg:circle" )
+                .attr( "r", 0 )
+                .style( "fill", "#FFF" );
+        anchorNode.append( "svg:text" )
+                .text(function ( d, i ) {
+            return i % 2 == 0 ? "" : d.node.label
+        } ).style( "fill", "#555" ).style( "font-family", "Arial" ).style( "font-size", 12 );
+
+        var updateLink = function () {
+            this.attr( "x1",function ( d ) {
+                return d.source.x;
+            } ).attr( "y1",function ( d ) {
+                        return d.source.y;
+                    } ).attr( "x2",function ( d ) {
+                        return d.target.x;
+                    } ).attr( "y2", function ( d ) {
+                        return d.target.y;
+                    } );
+
+        }
+
+        var updateNode = function () {
+            this.attr( "transform", function ( d ) {
+                return "translate(" + d.x + "," + d.y + ")";
+            } );
+        }
+
+
+        force.on( "tick", function () {
+
+            force2.start();
+
+            node.call( updateNode );
+
+            anchorNode.each( function ( d, i ) {
+                if ( i % 2 == 0 ) {
+                    d.x = d.node.x;
+                    d.y = d.node.y;
+                } else {
+                    var b = this.childNodes[1].getBBox();
+
+                    var diffX = d.x - d.node.x;
+                    var diffY = d.y - d.node.y;
+
+                    var dist = Math.sqrt( diffX * diffX + diffY * diffY );
+
+                    var shiftX = b.width * (diffX - dist) / (dist * 2);
+                    shiftX = Math.max( -b.width, Math.min( 0, shiftX ) );
+                    var shiftY = 5;
+                    this.childNodes[1].setAttribute( "transform", "translate(" + shiftX + "," + shiftY + ")" );
+                }
+            } );
+
+
+            anchorNode.call( updateNode );
+
+            link.call( updateLink );
+            anchorLink.call( updateLink );
+
+        } );
+
+        </script>
+
 
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
       <footer class="inner">
-        <p class="copyright">Venturelab-creativity maintained by <a href="https://github.com/jp-a">jp-a</a></p>
+        <p class="copyright">Venture Lab - Creativity Course - by <a href="https://github.com/jp-a">Hi5</a> Team</p>
         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
