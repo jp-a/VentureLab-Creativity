@@ -32,18 +32,18 @@
 
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>Getting to know you</h3>
+        <section id="main_content" class="inner">
+            <h3>Getting to know each others - what we all 'are', 'like' or 'have' in common:</h3>
 
-          <p>The layout is rendered dynamically.<br/>You can drag dots around...</p>
+            <div id="graph"/>
 
-          <div id="graph"/>
-      </section>
+            <p><em>The layout is rendered dynamically. You can drag dots around...</em></p>
+
+        </section>
     </div>
 
 
-
-        <script type="text/javascript" charset="utf-8">
+    <script type="text/javascript" charset="utf-8">
         var w = 960, h = 500;
 
         var labelDistance = 5;
@@ -67,22 +67,18 @@
                 label: 'Greg'
                 , type: 'person'
             },
-            {
-                label: 'Anshu'
-                , type: 'person'
-            },
-            { label: 'I like art' },
-            { label: 'I have a car' },
-            { label: 'I am married' },
-            { label: 'I have a child' },
-            { label: 'I like nature' },
-            { label: 'I like to travel' },
-            { label: 'I am spiritual' },
-            { label: 'I like endless conversation about the meaning of life' },
-            { label: 'I like nice food' },
-            { label: 'I like wine' },
-            { label: 'I like being creative' },
-            { label: 'I like to be on time' }
+            { label: 'We like art' },
+            { label: 'We have a car' },
+            { label: 'We am married' },
+            { label: 'We have a child' },
+            { label: 'We like nature' },
+            { label: 'We like travelling' },
+            { label: 'We are spiritual' },
+            { label: 'We like endless conversation about the meaning of life' },
+            { label: 'We like nice food' },
+            { label: 'We like wine' },
+            { label: 'We like being creative' },
+            { label: 'We like to be on time' }
         ];
 
         var labelAnchors = [];
@@ -107,8 +103,8 @@
 
         // Links
         var links = [];
-        for ( var s = 0; s < 5; s++ ) {
-            for ( var t = 5; t < nodes.length; t++ ) {
+        for ( var s = 0; s < 4; s++ ) {
+            for ( var t = 4; t < nodes.length; t++ ) {
                 links.push( {
                     source: s,
                     target: t,
