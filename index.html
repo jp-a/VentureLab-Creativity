@@ -10,7 +10,7 @@
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript" src="javascripts/vendors/d3/d3.v2.js"></script>
-    <script type="text/javascript" src="javascripts/vendors/oocharts/2.1/oocharts.js"></script>
+    <!--<script type="text/javascript" src="javascripts/vendors/oocharts/2.1/oocharts.js"></script>-->
 
     <title>Venturelab-creativity</title>
 
@@ -60,27 +60,27 @@
 
         </section>
 
-        <section id="stats" class="inner">
-            <script type="text/javascript">
+        <!--<section id="stats" class="inner">-->
+            <!--<script type="text/javascript">-->
 
-                //Set your ooid
-                oo.setOOId("37cb467699664162b48b632f957ba6d1");
+                <!--//Set your ooid-->
+                <!--oo.setOOId("37cb467699664162b48b632f957ba6d1");-->
 
-                //load reqs
-                oo.load(function()
-                {
-                    //Create a new metric (aid, startDate, endDate)
-                    var metric = new oo.Metric("UA-35781362-1", new Date("09/01/2012"), new Date("12/01/2012"));
+                <!--//load reqs-->
+                <!--oo.load(function()-->
+                <!--{-->
+                    <!--//Create a new metric (aid, startDate, endDate)-->
+                    <!--var metric = new oo.Metric("UA-35781362-1", new Date("09/01/2012"), new Date("12/01/2012"));-->
 
-                    //Set the metric to pull from the visitor count
-                    metric.setMetric('ga:visitors');
+                    <!--//Set the metric to pull from the visitor count-->
+                    <!--metric.setMetric('ga:visitors');-->
 
-                    //draw in the h1 element with id 'met'
-                    metric.draw('met');
-                });
-            </script>
-            <h1 id="met"></h1>
-        </section >
+                    <!--//draw in the h1 element with id 'met'-->
+                    <!--metric.draw('met');-->
+                <!--});-->
+            <!--</script>-->
+            <!--<h1 id="met"></h1>-->
+        <!--</section >-->
 
         <section id="comments" class="inner">
             <div id="disqus_thread"></div>
