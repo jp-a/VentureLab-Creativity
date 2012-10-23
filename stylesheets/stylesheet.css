@@ -258,7 +258,7 @@ form {
 }
 
 img {
-  width: 100%;
+  /*width: 100%;*/
   max-width: 100%;
 }
 
@@ -319,6 +319,15 @@ Full-Width Styles
   font-weight: 300;
   background: none;
   text-shadow: #111 0px 0px 10px;
+}
+
+#likes {
+    position: absolute;
+    width: 210px;
+    z-index: 10;
+    bottom: -40px;
+    right: 0;
+    height: 70px;
 }
 
 #downloads {
