@@ -77,8 +77,7 @@
         <p>
             To find what we have in common, we have used a Google Sheet were any of us could add anything.<br/>
             The other had to select the ones relevant to them too and we just had to choose the ones that were selected by everyone of us to find what we all have in common.<br/>
-            To share this with the rest of the class, we wanted to find a visual way that shows what links us together<br/>
-            Because the graph is dynamically rendered, you can drag one person away to see what links this person to the 3 other ones...<br/>
+            To share this with the rest of the class, we wanted to find a visual way that shows what links us together.<br/>
         </p>
 
 
@@ -132,6 +131,24 @@
 
 
 <script type="text/javascript" charset="utf-8">
+if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) { //test for MSIE x.x;
+//if (true) { //test for MSIE x.x;
+    var ieversion=new Number(RegExp.$1) // capture x.x portion and store as a number
+//    if (ieversion>=8)
+//        $( '#graph' ).html("You're using IE8 or above")
+//    else if (ieversion>=7)
+//        document.write("You're using IE7.x")
+//    else if (ieversion>=6)
+//        document.write("You're using IE6.x")
+//    else if (ieversion>=5)
+//        document.write("You're using IE5.x")
+
+    $( '#graph' ).html( "Now, it seems like you are using Internet Explorer. The graph cannot be rendered dynamically and is displayed as a static image instead. Please consider using Chrome or Firefox instead....<br/><img src='images/static_graph.png'/>" )
+
+}
+else
+{
+$( '#graph' ).html( "Because the graph is dynamically rendered, you can drag one person away to see what links this person to the 3 other ones...<br/>" );
 var w = 1024, h = 500;
 
 var labelDistance = 5;
@@ -339,7 +356,7 @@ force.on( "tick", function () {
     anchorLink.call( updateLink );
 
 } );
-
+}
 </script>
 
 <!-- FOOTER  -->
