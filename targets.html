@@ -1,26 +1,31 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<script src="http://d3js.org/d3.v2.js?2.9.1"></script>
-<style>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <script type="text/javascript" src="javascripts/vendors/d3/d3.v2.js"></script>
+    <!--<link type="text/css" rel="stylesheet" href="style.css"/>-->
+    <!--<script src="http://d3js.org/d3.v2.js?2.9.1"></script>-->
+    <style>
+        .link {
+            fill: none;
+            stroke: #666;
+            stroke-width: 1.5px;
+        }
 
-    .link {
-        fill: none;
-        stroke: #666;
-        stroke-width: 1.5px;
-    }
+        .node circle {
+            fill: #ccc;
+            stroke: #fff;
+            stroke-width: 1.5px;
+        }
 
-    .node circle {
-        fill: #ccc;
-        stroke: #fff;
-        stroke-width: 1.5px;
-    }
+        text {
+            font: 10px sans-serif;
+            pointer-events: none;
+        }
 
-    text {
-        font: 10px sans-serif;
-        pointer-events: none;
-    }
+    </style>
+</head>
 
-</style>
 <body>
 <script>
 

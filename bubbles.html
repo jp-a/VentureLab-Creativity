@@ -14,6 +14,9 @@
             stroke: #000;
             stroke-opacity: .5;
         }
+        text {
+            font: 10px sans-serif;
+        }
 
     </style>
 </head>
@@ -22,10 +25,10 @@
 </div>
 <script type="text/javascript">
 
-    var w = 1280,
+    var w = 960,
             h = 800;
 
-    var color = d3.scale.category10();
+    var color = d3.scale.category20c();
 
 //    var nodes = d3.range( 200 ).map( function () {
 //                return {radius: Math.random() * 12 + 4};
@@ -33,7 +36,7 @@
 //    console.log( nodes[ 0 ] );
 
     var person_radius = 40;
-    var node_radius = 20;
+    var node_radius = 40;
     var nodes = [
         {   label: ''
             , id: 'root'
@@ -66,7 +69,7 @@
         },
         { label: 'We like art',                 radius: node_radius, score: 4 },
         { label: 'We have a car',               radius: node_radius, score: 4 },
-        { label: 'We am married',               radius: node_radius, score: 4 },
+        { label: 'We are married',               radius: node_radius, score: 4 },
         { label: 'We have a child',             radius: node_radius, score: 4 },
         { label: 'We like nature',              radius: node_radius, score: 4 },
         { label: 'We like travelling',          radius: node_radius, score: 4 },
@@ -79,10 +82,10 @@
     ];
 
     var force = d3.layout.force()
-            .gravity( 0.05 )
+            .gravity( 0.04 )
             .charge( function ( d, i ) {
                 //return i ? 0 : -2000;
-                if( d.type == 'root' ) return -2000;
+                if( d.type == 'root' ) return -3000;
                 if( d.type == 'person' ) return 0;
                 else {
                     return 0
@@ -102,14 +105,43 @@
             .attr( "width", w )
             .attr( "height", h );
 
-    svg.selectAll( "circle" )
+    var node = svg.selectAll( "node" )
             .data( nodes.slice( 1 ) )
-            .enter().append( "svg:circle" )
+            .enter().append( "svg:g" );
+
+    node.append( "svg:circle" )
             .attr( "r", function ( d ) {
                 return d.radius - 2;
             } )
             .style( "fill", function ( d, i ) {
-                return color( i % 3 );
+                //return color( i % 3 );
+                return ( d.type == 'person' ) ? "pink" : color( i % 15 );
+            } );
+
+    node.append( "text" )
+            .attr( "text-anchor", "middle" )
+            .attr( "dy", ".3em" )
+            .text( function ( d ) {
+                return ( d.type == 'person' ) ? '' : d.label;
+                //.substring( 0, node_radius / 3 );
+            } );
+
+    node.append( "svg:image" )
+            .attr( "class", "circle-img" )
+            .attr( "xlink:href", function ( d, i ) {
+                return ( d.type == 'person' ) ? d.img : '';
+            } )
+            .attr( "x", function ( d, i ) {
+                return ( d.type == 'person' ) ? '-30px' : '-8px';
+            } )
+            .attr( "y", function ( d, i ) {
+                return ( d.type == 'person' ) ? '-30px' : '-8px';
+            } )
+            .attr( "width", function ( d, i ) {
+                return ( d.type == 'person' ) ? (person_radius*2)-4 + 'px' : '16px';
+            } )
+            .attr( "height", function ( d, i ) {
+                return ( d.type == 'person' ) ? (person_radius*2)-4 + 'px' : '16px';
             } );
 
     force.on( "tick", function ( e ) {
@@ -127,6 +159,20 @@
                 } )
                 .attr( "cy", function ( d ) {
                     return d.y;
+                } );
+        svg.selectAll( "text" )
+                .attr( "x", function ( d ) {
+                    return d.x;
+                } )
+                .attr( "y", function ( d ) {
+                    return d.y;
+                } );
+        svg.selectAll( "image" )
+                .attr( "x", function ( d ) {
+                    return d.x - person_radius+2;
+                } )
+                .attr( "y", function ( d ) {
+                    return d.y - person_radius+2;
                 } );
     } );
 
