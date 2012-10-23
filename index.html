@@ -7,6 +7,7 @@
     <meta name="description" content="Venturelab-creativity : "/>
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/graph.css">
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript" src="javascripts/vendors/d3/d3.v2.js"></script>
@@ -113,29 +114,25 @@
         var vis = d3.select( "#graph" ).append( "svg:svg" ).attr( "width", w ).attr( "height", h );
 
         var nodes = [
-            {
-                label: 'Jean-Philippe'
+            {   label: 'Jean-Philippe'
                 , type: 'person'
                 , id: 'jpa'
-                , avatar: 'http://s3.amazonaws.com/venture-lab/thumb/e56297220d7fa9bd4bfcac0a1461a25a421d3945.jpg?1350287157'
+                , img: 'images/nodes/jpa.png'
             },
-            {
-                label: 'Madan'
+            {   label: 'Madan'
                 , type: 'person'
                 , id: 'madan'
-                , avatar: 'http://s3.amazonaws.com/venture-lab/thumb/da2c160f5fbfd44bbb527e14df0ce3c46d400092.JPG?1350942412'
+                , img: 'images/nodes/madan.png'
             },
-            {
-                label: 'Faith'
+            {   label: 'Faith'
                 , type: 'person'
                 , id: 'faith'
-                , avatar: 'http://s3.amazonaws.com/venture-lab/thumb/733a57eb434b5c553180a08499ccae2b9ad1061e.jpg?1350614797'
+                , img: 'images/nodes/faith.png'
             },
-            {
-                label: 'Greg'
+            {   label: 'Greg'
                 , type: 'person'
                 , id: 'greg'
-                , avatar: 'http://s3.amazonaws.com/venture-lab/thumb/9915167c123ce2f6b5af78d60b15a3d0be33d45e.JPG?1350661315'
+                , img: 'images/nodes/greg.png'
             },
             { label: 'We like art' },
             { label: 'We have a car' },
@@ -226,16 +223,21 @@
                     return d.id
                 } );
 
-        node.append( "svg:circle" )
-                .attr( "xlink:href", "https://d3nwyuy0nl342s.cloudfront.net/images/icons/public.png" )
-                .attr( "r", function ( d, i ) {
-                    return ( d.type == 'person' ) ? 10 : 5;
-                } )
-//                .style( "fill", function ( d, i ) {
-//                    return ( d.type == 'person' ) ? "deeppink" : "#555";
-//                } )
-                .style( "stroke", "#FFF" )
-                .style( "stroke-width", 3 );
+//        node.append( "svg:circle" )
+//                .attr( "r", function ( d, i ) { return ( d.type == 'person' ) ? 10 : 5; } )
+//                .style( "fill", function ( d, i ) { return ( d.type == 'person' ) ? "" : "#555"; } )
+//                .style( "stroke", "#FFF" )
+//                .style( "stroke-width", 3 );
+
+        node.append( "svg:image" )
+                .attr( "class", "circle-img" )
+                .attr( "xlink:href", function ( d, i ) { return ( d.type == 'person' ) ? d.img : ''; }  )
+                //.attr( "style", function ( d, i ) { return ( d.type == 'person' ) ? 'background-image: url('+d.img+')' : ''; }  )
+                .attr( "x", function ( d, i ) { return ( d.type == 'person' ) ? '-16px' : '-8px'; } )
+                .attr( "y", function ( d, i ) { return ( d.type == 'person' ) ? '-16px' : '-8px'; } )
+                .attr( "width", function ( d, i ) { return ( d.type == 'person' ) ? '26px' : '16px'; } )
+                .attr( "height", function ( d, i ) { return ( d.type == 'person' ) ? '26px' : '16px'; } );
+
 //        node.call( force.drag );
 
 
