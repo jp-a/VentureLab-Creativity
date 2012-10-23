@@ -223,22 +223,22 @@
                     return d.id
                 } );
 
-//        node.append( "svg:circle" )
-//                .attr( "r", function ( d, i ) { return ( d.type == 'person' ) ? 10 : 5; } )
-//                .style( "fill", function ( d, i ) { return ( d.type == 'person' ) ? "" : "#555"; } )
-//                .style( "stroke", "#FFF" )
-//                .style( "stroke-width", 3 );
+        node.append( "svg:circle" )
+                .attr( "r", function ( d, i ) { return ( d.type == 'person' ) ? 10 : 5; } )
+                .style( "fill", function ( d, i ) { return ( d.type == 'person' ) ? "" : "#555"; } )
+                .style( "stroke", "#FFF" )
+                .style( "stroke-width", 3 );
 
         node.append( "svg:image" )
                 .attr( "class", "circle-img" )
                 .attr( "xlink:href", function ( d, i ) { return ( d.type == 'person' ) ? d.img : ''; }  )
                 //.attr( "style", function ( d, i ) { return ( d.type == 'person' ) ? 'background-image: url('+d.img+')' : ''; }  )
-                .attr( "x", function ( d, i ) { return ( d.type == 'person' ) ? '-16px' : '-8px'; } )
-                .attr( "y", function ( d, i ) { return ( d.type == 'person' ) ? '-16px' : '-8px'; } )
+                .attr( "x", function ( d, i ) { return ( d.type == 'person' ) ? '-13px' : '-8px'; } )
+                .attr( "y", function ( d, i ) { return ( d.type == 'person' ) ? '-13px' : '-8px'; } )
                 .attr( "width", function ( d, i ) { return ( d.type == 'person' ) ? '26px' : '16px'; } )
                 .attr( "height", function ( d, i ) { return ( d.type == 'person' ) ? '26px' : '16px'; } );
 
-//        node.call( force.drag );
+        node.call( force.drag );
 
 
         var anchorLink = vis.selectAll( "line.anchorLink" )
