@@ -13,23 +13,17 @@
     <script type="text/javascript" src="javascripts/vendors/d3/d3.v2.js"></script>
     <!--<script type="text/javascript" src="javascripts/vendors/oocharts/2.1/oocharts.js"></script>-->
 
-    <title>Venturelab-creativity</title>
+    <title>Venture Lab - Creativity</title>
 
     <script type="text/javascript">
-
         var _gaq = _gaq || [];
-        _gaq.push( ['_setAccount', 'UA-35781362-1'] );
-        _gaq.push( ['_trackPageview'] );
-
-        (function () {
-            var ga = document.createElement( 'script' );
-            ga.type = 'text/javascript';
-            ga.async = true;
+        _gaq.push(['_setAccount', 'UA-35793867-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName( 'script' )[0];
-            s.parentNode.insertBefore( ga, s );
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
-
     </script>
 </head>
 
@@ -143,12 +137,12 @@ if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) { //test for MSIE x.x;
 //    else if (ieversion>=5)
 //        document.write("You're using IE5.x")
 
-    $( '#graph' ).html( "Now, it seems like you are using Internet Explorer. The graph cannot be rendered dynamically and is displayed as a static image instead. Please consider using Chrome or Firefox instead....<br/><img src='images/static_graph.png'/>" )
+    $( '#graph' ).html( "<em>Now, it seems like you are using Internet Explorer. The graph cannot be rendered dynamically and is displayed as a static image instead. Please consider using Chrome or Firefox instead....</em><br/><img src='images/static_graph.png'/>" )
 
 }
 else
 {
-$( '#graph' ).html( "Because the graph is dynamically rendered, you can drag one person away to see what links this person to the 3 other ones...<br/>" );
+$( '#graph' ).html( "<em>Because the graph is dynamically rendered, you can drag one person away to see what links this person to the 3 other ones...</em>" );
 var w = 1024, h = 500;
 
 var labelDistance = 5;
