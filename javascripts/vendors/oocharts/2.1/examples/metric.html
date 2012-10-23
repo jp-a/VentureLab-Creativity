@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Metric Example</title>
+		
+		<!--Load the oocharts script-->
+		<script src="../oocharts.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+		
+			//Set your ooid
+			oo.setOOId("enter your ooid");
+			
+			//load reqs
+			oo.load(function()
+			{
+				//Create a new metric (aid, startDate, endDate)
+				var metric = new oo.Metric("enter you analytics profile id", new Date("enter date (mm/dd/yyyy)"), new Date("enter date (mm/dd/yyyy)"));
+				
+				//Set the metric to pull from the visitor count
+				metric.setMetric('ga:visitors');
+				
+				//draw in the h1 element with id 'met'
+				metric.draw('met');
+			});
+		</script>
+		<h1 id="met"></h1>
+	</body>
+</html>

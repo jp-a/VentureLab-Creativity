@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Table Example</title>
+		
+		<!--Load the oocharts script-->
+		<script src="../oocharts.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+		
+			//Set your ooid
+			oo.setOOId("enter your ooid");
+			
+			//load reqs
+			oo.load(function()
+			{
+				//Create a new table (aid, startDate, endDate)
+				var p= new oo.Table("enter you analytics profile id", new Date("enter date (mm/dd/yyyy)"), new Date("enter date (mm/dd/yyyy)"));
+				
+				//add the metric to pull from the visitor count
+				p.addMetric('ga:visitors', 'Visitors');
+				
+				//add the dimension to pull from the different browser types
+				p.addDimension('ga:browser', 'Browser');
+				
+				//set Google visualization option to enable paging
+				p.setOption('page' 'enable');
+				
+				//draw in the div element with id 'table'
+				p.draw('table');
+			});
+		</script>
+		<div id="table"></div>
+	</body>
+</html>
