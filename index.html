@@ -202,7 +202,7 @@ var force = d3.layout
         .links( links )
         .gravity( 1 )
         .linkDistance( 150 )
-        .charge( -50000 )
+        .charge( -30000 )
         .linkStrength( function ( x ) {
             return x.weight * 5
         } );
@@ -239,7 +239,7 @@ var node = vis.selectAll( "g.node" )
 
 node.append( "svg:circle" )
         .attr( "r", function ( d, i ) {
-            return ( d.type == 'person' ) ? 10 : 5;
+            return ( d.type == 'person' ) ? 14 : 5;
         } )
         .style( "fill", function ( d, i ) {
             return ( d.type == 'person' ) ? "" : "#555";
