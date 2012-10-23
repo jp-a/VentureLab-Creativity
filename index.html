@@ -79,28 +79,6 @@
 
     </section>
 
-    <!--<section id="stats" class="inner">-->
-    <!--<script type="text/javascript">-->
-
-    <!--//Set your ooid-->
-    <!--oo.setOOId("37cb467699664162b48b632f957ba6d1");-->
-
-    <!--//load reqs-->
-    <!--oo.load(function()-->
-    <!--{-->
-    <!--//Create a new metric (aid, startDate, endDate)-->
-    <!--var metric = new oo.Metric("UA-35781362-1", new Date("09/01/2012"), new Date("12/01/2012"));-->
-
-    <!--//Set the metric to pull from the visitor count-->
-    <!--metric.setMetric('ga:visitors');-->
-
-    <!--//draw in the h1 element with id 'met'-->
-    <!--metric.draw('met');-->
-    <!--});-->
-    <!--</script>-->
-    <!--<h1 id="met"></h1>-->
-    <!--</section >-->
-
     <section id="comments" class="inner">
         <div id="disqus_thread"></div>
         <script type="text/javascript">
@@ -143,20 +121,32 @@ if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) { //test for MSIE x.x;
 else
 {
 $( '#graph' ).html( "<em>Because the graph is dynamically rendered, you can drag one person away to see what links this person to the 3 other ones...</em>" );
-var w = 1024, h = 500;
+var w = 1024, h = 640;
 
 var labelDistance = 5;
 
 var vis = d3.select( "#graph" ).append( "svg:svg" ).attr( "width", w ).attr( "height", h );
 
 var nodes = [
-    {   label: 'Jean-Philippe', type: 'person', id: 'jpa', img: 'images/nodes/jpa.png'
+    {   label: 'Jean-Philippe'
+        , type: 'person'
+        , id: 'jpa'
+        , img: 'images/nodes/jpa.png'
     },
-    {   label: 'Madan', type: 'person', id: 'madan', img: 'images/nodes/madan.png'
+    {   label: 'Madan'
+        , type: 'person'
+        , id: 'madan'
+        , img: 'images/nodes/madan.png'
     },
-    {   label: 'Faith', type: 'person', id: 'faith', img: 'images/nodes/faith.png'
+    {   label: 'Faith'
+        , type: 'person'
+        , id: 'faith'
+        , img: 'images/nodes/faith.png'
     },
-    {   label: 'Greg', type: 'person', id: 'greg', img: 'images/nodes/greg.png'
+    {   label: 'Greg'
+        , type: 'person'
+        , id: 'greg'
+        , img: 'images/nodes/greg.png'
     },
     { label: 'We like art' },
     { label: 'We have a car' },
@@ -165,7 +155,7 @@ var nodes = [
     { label: 'We like nature' },
     { label: 'We like travelling' },
     { label: 'We are spiritual' },
-    { label: 'We like endless conversation about the meaning of life' },
+    { label: 'We like long conversations' },
     { label: 'We like nice food' },
     { label: 'We like wine' },
     { label: 'We like being creative' },
@@ -190,8 +180,7 @@ for ( var i = 0; i < nodes.length; i++ ) {
         target: i * 2 + 1,
         weight: 1
     } );
-}
-;
+};
 
 // Links
 var links = [];
@@ -203,8 +192,7 @@ for ( var s = 0; s < 4; s++ ) {
             weight: 1
         } );
     }
-}
-;
+};
 
 
 var force = d3.layout
@@ -213,7 +201,7 @@ var force = d3.layout
         .nodes( nodes )
         .links( links )
         .gravity( 1 )
-        .linkDistance( 200 )
+        .linkDistance( 150 )
         .charge( -3000 )
         .linkStrength( function ( x ) {
             return x.weight * 5
